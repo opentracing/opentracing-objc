@@ -2,7 +2,7 @@
 
 #import "OTTracer.h"
 
-@class OTNoopTracer : NSObject<OTTracer>
+@interface OTNoopTracer : NSObject<OTTracer>
 
 - (id<OTSpan>)startSpan:(NSString*)operationName;
 
