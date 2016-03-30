@@ -9,5 +9,6 @@
 #import "OTTracer.h"
 #import "OTSpan.h"
 #import "OTNoop.h"
+#import "OTGlobal.h"
 
 #endif /* OpenTracing_Bridging_Header_h */
