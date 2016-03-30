@@ -1,11 +1,10 @@
-#import <Foundation/Foundation.h>
-
 @protocol OTTracer;
 
 @interface OTGlobal : NSObject
 
 /*
- * Set the shared singleton OTTracer instance.
+ * Set the shared singleton OTTracer instance. Before this is called
+ * for the first time, the OTNoopTracer acts as the shared tracer.
  */
 + (void)initSharedTracer:(id<OTTracer>)tracer;
 

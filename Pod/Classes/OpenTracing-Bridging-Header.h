@@ -10,5 +10,6 @@
 #import "OTSpan.h"
 #import "OTNoop.h"
 #import "OTGlobal.h"
+#import "OTVersion.h"
 
 #endif /* OpenTracing_Bridging_Header_h */
