@@ -1,4 +1,5 @@
 #import "OTNoop.h"
+#import "OTSpan.h"
 
 @implementation OTNoopTracer
 
