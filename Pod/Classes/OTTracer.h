@@ -2,6 +2,8 @@
 
 @protocol OTSpan;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * The TextMap format string for OTTracer.inject and OTTracer.join.
  */
@@ -32,29 +34,29 @@ FOUNDATION_EXPORT NSInteger OTTraceCorruptedCode;
  * no parent specified, the returned span will be a trace root.
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-                   tags:(NSDictionary*)tags;
+                   tags:(nullable NSDictionary*)tags;
 
 /**
  * Start a new span with the given operation name and parent span.
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-                 parent:(id<OTSpan>)parentSpan;
+                 parent:(nullable id<OTSpan>)parentSpan;
 
 /**
  * Start a new span with the given operation name, parent span, and tags.
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-              parent:(id<OTSpan>)parentSpan
-                tags:(NSDictionary*)tags;
+              parent:(nullable id<OTSpan>)parentSpan
+                tags:(nullable NSDictionary*)tags;
 
 /**
  * Start a new span with the given operation name and other optional
  * parameters.
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-              parent:(id<OTSpan>)parentSpan
-                tags:(NSDictionary*)tags
-           startTime:(NSDate*)startTime;
+              parent:(nullable id<OTSpan>)parentSpan
+                tags:(nullable NSDictionary*)tags
+           startTime:(nullable NSDate*)startTime;
 
 /**
  * Transfer the span information into the carrier of the given format.
@@ -74,7 +76,9 @@ FOUNDATION_EXPORT NSInteger OTTraceCorruptedCode;
  *
  * See http://opentracing.io/propagation/
  */
-- (id<OTSpan>)join:(NSString*)operationName format:(NSString*)format carrier:(id)carrier;
-- (id<OTSpan>)join:(NSString*)operationName format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (nullable id<OTSpan>)join:(NSString*)operationName format:(NSString*)format carrier:(id)carrier;
+- (nullable id<OTSpan>)join:(NSString*)operationName format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
 
 @end
+
+NS_ASSUME_NONNULL_END

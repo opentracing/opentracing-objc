@@ -1,5 +1,7 @@
 @protocol OTTracer;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface OTGlobal : NSObject
 
 /*
@@ -14,3 +16,5 @@
 + (id<OTTracer>)sharedTracer;
 
 @end
+
+NS_ASSUME_NONNULL_END
