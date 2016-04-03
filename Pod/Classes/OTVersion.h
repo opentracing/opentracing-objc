@@ -1,3 +1,3 @@
 // GENERATED FILE: Do not edit directly
-#define OT_TRACER_VERSION @"0.1.7"
+#define OT_TRACER_VERSION @"0.1.8"
 
