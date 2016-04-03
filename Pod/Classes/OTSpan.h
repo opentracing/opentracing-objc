@@ -1,5 +1,7 @@
 @protocol OTTracer;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * OTSpan establishes the OpenTracing Span contract.
  *
@@ -30,15 +32,15 @@
 /**
  * Log a timestamped event along with an arbitrary payload of data.
  */
-- (void)logEvent:(NSString*)eventName payload:(NSObject*)payload;
+- (void)logEvent:(NSString*)eventName payload:(nullable NSObject*)payload;
 
 /**
  * Create a log record for given event with a manually specified timestamp
  * and an optional payload.
  */
 - (void)log:(NSString*)eventName
-  timestamp:(NSDate*)timestamp
-    payload:(NSObject*)payload;
+  timestamp:(nullable NSDate*)timestamp
+    payload:(nullable NSObject*)payload;
 
 /**
  * Add a baggage item that propagates along with the distributed trace. See http://opentracing.io/spec/#baggage .
@@ -50,7 +52,7 @@
  *
  * Returns nil if no baggage item exists for the given key.
  */
-- (NSString*)getBaggageItem:(NSString*)key;
+- (nullable NSString*)getBaggageItem:(NSString*)key;
 
 /**
  * Mark the finish time and record this span.
@@ -58,8 +60,10 @@
 - (void) finish;
 
 /**
- * Record this span with the explicitly specified finish time.
+ * Record this span with the explicitly specified finish time. If finishTime is nil, use the local walltime.
  */
-- (void) finishWithTime:(NSDate*)finishTime;
+- (void) finishWithTime:(nullable NSDate*)finishTime;
 
 @end
+
+NS_ASSUME_NONNULL_END
