@@ -1,3 +1,4 @@
+@protocol OTSpanContext;
 @protocol OTTracer;
 
 NS_ASSUME_NONNULL_BEGIN

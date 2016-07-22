@@ -17,6 +17,19 @@ NS_ASSUME_NONNULL_BEGIN
 FOUNDATION_EXPORT NSString *const OTFormatTextMap;
 
 /**
+ * The HTTP header format identifier for OTTracer.inject and OTTracer.extract.
+ *
+ * The carrier for OTFormatHTTPHeaders must be an NSMutableDictionary* instance for `inject` and an NSDictionary* instance for `extract`.
+ *
+ * Keys and values in these dictionaries must be usable as-is in the respective HTTP headers context.
+ *
+ * TODO: move to @protocols for writing and reading to HTTP headers.
+ *
+ * @see http://opentracing.io/propagation/
+ */
+FOUNDATION_EXPORT NSString *const OTFormatHTTPHeaders;
+
+/**
  * The Binary format identifier for OTTracer.inject and OTTracer.extract.
  *
  * The carrier for OTFormatBinary must be an NSMutableData* instance for `inject` and an NSData* instance for `extract`.
@@ -143,11 +156,11 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorrupted;
 - (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
 
 /**
- * @see OTTracer#join:format:carrier:error:
+ * @see OTTracer#extract:carrier:error:
  */
 - (nullable id<OTSpanContext>)extract:(NSString*)format carrier:(id)carrier;
 /**
- * Create a new span joined to the trace (remotely) injected into the carrier of the given format.
+ * Extract a SpanContext previously (and remotely) injected into the carrier of the given format.
  *
  * For example:
  *
@@ -157,7 +170,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorrupted;
  *
  * @see http://opentracing.io/propagation/
  *
- * @param format the desired join carrier format; OTFormatTextMap and OTFormatBinary are both required carriers for any OTTracer implementation
+ * @param format the desired extract carrier format; OTFormatTextMap and OTFormatBinary are both required carriers for any OTTracer implementation
  * @param carrier an instance of the carrier type expected by the given `format`
  * @param outError an NSError output parameter in which to record problems with the injection. OpenTracing errors will be in the OTErrorDomain and may involve OTUnsupportedFormatCode, OTInvalidCarrierCode, or OTTraceCorruptedCode.
  * @returns a newly-created OTSpanContext that belongs to the trace previously injected into the carrier (presumably in a remote process)

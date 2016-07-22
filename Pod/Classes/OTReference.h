@@ -5,6 +5,11 @@ FOUNDATION_EXPORT NSString *const OTReferenceFollowsFrom;
 
 @protocol OTSpanContext;
 
+/**
+ * A Reference pairs a reference type with a SpanContext referee. References are used when starting spans.
+ *
+ * @see OTTracer#startSpan:references:tags:startTime:
+ */
 @interface OTReference : NSObject
 
 @property (strong, nonatomic) NSString* type;

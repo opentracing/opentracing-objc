@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- * SpanContext represents Span state that must propagate to descendant Spans and across process boundaries.
+ * OTSpanContext represents Span state that must propagate to descendant Spans and across process boundaries.
  *
- * SpanContext is logically divided into two pieces: the user-level "Baggage" (see set_baggage_item and get_baggage_item) that propagates across Span boundaries and any Tracer-implementation-specific fields that are needed to identify or otherwise contextualize the associated Span instance (e.g., a <trace_id, span_id, sampled> tuple).
+ * OTSpanContext is logically divided into two pieces: the user-level "Baggage" (see set_baggage_item and get_baggage_item) that propagates across Span boundaries and any Tracer-implementation-specific fields that are needed to identify or otherwise contextualize the associated Span instance (e.g., a <trace_id, span_id, sampled> tuple).
  *
  * See the OpenTracing specification at http://opentracing.io/spec to understand the concepts below.
  */
