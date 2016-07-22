@@ -1,7 +1,9 @@
 #import "OTNoop.h"
 #import "OTSpan.h"
+#import "OTSpanContext.h"
 
 @class OTNoopSpan;
+@class OTNoopSpanContext;
 
 // Initialized in OTNoopTracer.initialize:
 static OTNoopTracer* g_defaultNoopTracer;
