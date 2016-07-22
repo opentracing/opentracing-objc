@@ -23,7 +23,7 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 
 @implementation OTNoopSpan
 - (id<OTTracer>)tracer { return g_defaultNoopTracer; }
-- (id<OTTracer>)context { return g_defaultNoopSpanContext; }
+- (id<OTSpanContext>)context { return g_defaultNoopSpanContext; }
 - (void)setOperationName:(NSString*)operationName {}
 - (void)setTag:(NSString*)key value:(NSString*)value {}
 - (void)logEvent:(NSString*)eventName {}
@@ -43,9 +43,10 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 
 - (id<OTSpan>)startSpan:(NSString*)operationName { return g_defaultNoopSpan; }
 - (id<OTSpan>)startSpan:(NSString*)operationName tags:(NSDictionary*)tags { return g_defaultNoopSpan; }
-- (id<OTSpan>)startSpan:(NSString*)operationName parent:(id<OTSpan>)parentSpan { return g_defaultNoopSpan; }
-- (id<OTSpan>)startSpan:(NSString*)operationName parent:(id<OTSpan>)parentSpan tags:(NSDictionary*)tags { return g_defaultNoopSpan; }
-- (id<OTSpan>)startSpan:(NSString*)operationName parent:(id<OTSpan>)parentSpan tags:(NSDictionary*)tags startTime:(NSDate*)startTime { return g_defaultNoopSpan; }
+- (id<OTSpan>)startSpan:(NSString*)operationName childOf:(id<OTSpanContext>)parent { return g_defaultNoopSpan; }
+- (id<OTSpan>)startSpan:(NSString*)operationName childOf:(id<OTSpanContext>)parent tags:(NSDictionary*)tags { return g_defaultNoopSpan; }
+- (id<OTSpan>)startSpan:(NSString*)operationName childOf:(id<OTSpanContext>)parent tags:(NSDictionary*)tags startTime:(NSDate*)startTime { return g_defaultNoopSpan; }
+- (id<OTSpan>)startSpan:(NSString*)operationName references:(NSArray*)references tags:(NSDictionary*)tags startTime:(NSDate*)startTime { return g_defaultNoopSpan; }
 
 - (bool)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier { return true; }
 - (bool)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError { return true; }
