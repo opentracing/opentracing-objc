@@ -154,7 +154,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
  */
-- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(nullable NSError* __autoreleasing *)outError;
+- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
 
 /**
  * @see OTTracer#extractWithFormat:carrier:error:
@@ -184,7 +184,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTInvalidCarrierCode
  * @see OTTracer#startSpan:references:tags:startTime:
  */
-- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(nullable NSError* __autoreleasing *)outError;
+- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
 
 @end
 
