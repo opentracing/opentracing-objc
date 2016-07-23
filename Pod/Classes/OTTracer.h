@@ -79,7 +79,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTTracer#startSpan:references:tags:startTime: for paramater and return value documentation
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-		   tags:(nullable NSDictionary*)tags;
+                   tags:(nullable NSDictionary*)tags;
 
 /**
  * Start a new span with the given operation name and parent span.
@@ -87,7 +87,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTTracer#startSpan:references:tags:startTime: for paramater and return value documentation
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-		childOf:(nullable id<OTSpanContext>)parent;
+                childOf:(nullable id<OTSpanContext>)parent;
 
 /**
  * Start a new span with the given operation name, parent span, and tags.
@@ -95,8 +95,8 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTTracer#startSpan:references:tags:startTime: for paramater and return value documentation
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-		childOf:(nullable id<OTSpan>)parent
-		   tags:(nullable NSDictionary*)tags;
+                childOf:(nullable id<OTSpan>)parent
+                   tags:(nullable NSDictionary*)tags;
 
 /**
  * Start a new span with the given operation name, parent span, tags, and start time.
@@ -104,9 +104,9 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTTracer#startSpan:references:tags:startTime: for paramater and return value documentation
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-		childOf:(nullable id<OTSpanContext>)parent
-		   tags:(nullable NSDictionary*)tags
-	      startTime:(nullable NSDate*)startTime;
+                childOf:(nullable id<OTSpanContext>)parent
+                   tags:(nullable NSDictionary*)tags
+              startTime:(nullable NSDate*)startTime;
 
 /**
  * Start a new span with the given operation name and other optional
@@ -123,9 +123,9 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTSpan#setTag:value:
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-	     references:(nullable NSArray*)references
-		   tags:(nullable NSDictionary*)tags
-	      startTime:(nullable NSDate*)startTime;
+             references:(nullable NSArray*)references
+                   tags:(nullable NSDictionary*)tags
+              startTime:(nullable NSDate*)startTime;
 
 /**
  * @see OTTracer#inject:format:carrier:error:
@@ -142,47 +142,49 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see http://opentracing.io/propagation/
  *
  * @param spanContext the OTSpanContext instance to inject
- * @param format the desired inject carrier format; OTFormatTextMap and OTFormatBinary are both required carriers for any OTTracer implementation
+ * @param format the desired inject carrier format; OTFormatTextMap, OTFormatHTTPHeaders, and OTFormatBinary are both required carriers for any OTTracer implementation
  * @param carrier an instance of the carrier type expected by the given `format`
  * @param outError an NSError output parameter in which to record problems with the injection. OpenTracing errors will be in the OTErrorDomain and may involve OTUnsupportedFormatCode or OTInvalidCarrierCode.
  *
  * @see OTSpan#context
  * @see OTFormatTextMap
+ * @see OTFormatHTTPHeaders
  * @see OTFormatBinary
  * @see OTErrorDomain
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
  */
-- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(nullable NSError* __autoreleasing *)outError;
 
 /**
- * @see OTTracer#extract:carrier:error:
+ * @see OTTracer#extractWithFormat:carrier:error:
  */
-- (nullable id<OTSpanContext>)extract:(NSString*)format carrier:(id)carrier;
+- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier;
 /**
  * Extract a SpanContext previously (and remotely) injected into the carrier of the given format.
  *
  * For example:
  *
  *     NSDictionary *headerMap = req.headers;  // or similar
- *     id<OTSpanContext> ctx = [[OTTracer sharedTracer] extract:OTFormatTextMap carrier:headerMap];
+ *     id<OTSpanContext> ctx = [[OTTracer sharedTracer] extractWithFormat:OTFormatTextMap carrier:headerMap];
  *     id<OTSpan> span = [[OTTracer sharedTracer] startSpan:@"methodName" childOf:ctx];  // ctx may be nil
  *
  * @see http://opentracing.io/propagation/
  *
- * @param format the desired extract carrier format; OTFormatTextMap and OTFormatBinary are both required carriers for any OTTracer implementation
+ * @param format the desired extract carrier format; OTFormatTextMap, OTFormatHTTPHeaders, and OTFormatBinary are both required carriers for any OTTracer implementation
  * @param carrier an instance of the carrier type expected by the given `format`
  * @param outError an NSError output parameter in which to record problems with the injection. OpenTracing errors will be in the OTErrorDomain and may involve OTUnsupportedFormatCode, OTInvalidCarrierCode, or OTTraceCorruptedCode.
  * @returns a newly-created OTSpanContext that belongs to the trace previously injected into the carrier (presumably in a remote process)
  *
  * @see OTFormatTextMap
+ * @see OTFormatHTTPHeaders
  * @see OTFormatBinary
  * @see OTErrorDomain
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
  * @see OTTracer#startSpan:references:tags:startTime:
  */
-- (nullable id<OTSpanContext>)extract:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(nullable NSError* __autoreleasing *)outError;
 
 @end
 
