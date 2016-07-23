@@ -6,35 +6,29 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * The TextMap format identifier for OTTracer.inject and OTTracer.extract.
+ * The TextMap format identifier for OTTracer#inject:format:carrier: and OTTracer#extractWithFormat:carrier: .
  *
  * The carrier for OTFormatTextMap must be an NSMutableDictionary* instance for `inject` and an NSDictionary* instance for `extract`.
- *
- * TODO: move to @protocols for writing and reading to TextMaps.
  *
  * @see http://opentracing.io/propagation/
  */
 FOUNDATION_EXPORT NSString *const OTFormatTextMap;
 
 /**
- * The HTTP header format identifier for OTTracer.inject and OTTracer.extract.
+ * The HTTP header format identifier for OTTracer#inject:format:carrier: and OTTracer#extractWithFormat:carrier: .
  *
  * The carrier for OTFormatHTTPHeaders must be an NSMutableDictionary* instance for `inject` and an NSDictionary* instance for `extract`.
  *
  * Keys and values in these dictionaries must be usable as-is in the respective HTTP headers context.
- *
- * TODO: move to @protocols for writing and reading to HTTP headers.
  *
  * @see http://opentracing.io/propagation/
  */
 FOUNDATION_EXPORT NSString *const OTFormatHTTPHeaders;
 
 /**
- * The Binary format identifier for OTTracer.inject and OTTracer.extract.
+ * The Binary format identifier for OTTracer#inject:format:carrier: and OTTracer#extractWithFormat:carrier: .
  *
  * The carrier for OTFormatBinary must be an NSMutableData* instance for `inject` and an NSData* instance for `extract`.
- *
- * TODO: move to @protocols for writing and reading to the Binary format.
  *
  * @see http://opentracing.io/propagation/
  */
@@ -45,15 +39,15 @@ FOUNDATION_EXPORT NSString *const OTFormatBinary;
  */
 FOUNDATION_EXPORT NSString *const OTErrorDomain;
 /**
- * OTUnsupportedFormat should be used by `inject` and `extract` implementations that don't support the requested carrier format.
+ * OTUnsupportedFormat should be used by `OTTracer#inject:format:carrier:` and `OTTracer#extractWithFormat:carrier:` implementations that don't support the requested carrier format.
  */
 FOUNDATION_EXPORT NSInteger OTUnsupportedFormatCode;
 /**
- * OTInvalidCarrierCode should be used by `inject` and `extract` implementations that are unable to use the supplied carrier object, usually because of a type mismatch.
+ * OTInvalidCarrierCode should be used by `OTTracer#inject:format:carrier:` and `OTTracer#extractWithFormat:carrier:` implementations that are unable to use the supplied carrier object, usually because of a type mismatch.
  */
 FOUNDATION_EXPORT NSInteger OTInvalidCarrierCode;
 /**
- * OTSpanContextCorruptedCode should be used by `extract` implementations that found part of an injected trace but noticed data corruption and thus could not construct the extrectad OTSpanContext instance.
+ * OTSpanContextCorruptedCode should be used by `OTTracer#extractWithFormat:carrier:` implementations that found part of an injected trace but noticed data corruption and thus could not construct the extrectad OTSpanContext instance.
  */
 FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
 
@@ -173,7 +167,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  *
  * @param format the desired extract carrier format; OTFormatTextMap, OTFormatHTTPHeaders, and OTFormatBinary are both required carriers for any OTTracer implementation
  * @param carrier an instance of the carrier type expected by the given `format`
- * @param outError an NSError output parameter in which to record problems with the injection. OpenTracing errors will be in the OTErrorDomain and may involve OTUnsupportedFormatCode, OTInvalidCarrierCode, or OTTraceCorruptedCode.
+ * @param outError an NSError output parameter in which to record problems with the injection. OpenTracing errors will be in the OTErrorDomain and may involve OTUnsupportedFormatCode, OTInvalidCarrierCode, or OTSpanContextCorruptedCode.
  * @returns a newly-created OTSpanContext that belongs to the trace previously injected into the carrier (presumably in a remote process)
  *
  * @see OTFormatTextMap
@@ -182,6 +176,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTErrorDomain
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
+ * @see OTSpanContextCorruptedCode
  * @see OTTracer#startSpan:references:tags:startTime:
  */
 - (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
