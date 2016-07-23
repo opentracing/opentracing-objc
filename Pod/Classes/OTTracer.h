@@ -53,9 +53,9 @@ FOUNDATION_EXPORT NSInteger OTUnsupportedFormatCode;
  */
 FOUNDATION_EXPORT NSInteger OTInvalidCarrierCode;
 /**
- * OTSpanContextCorrupted should be used by `extract` implementations that found part of an injected trace but noticed data corruption and thus could not construct the extrectad OTSpanContext instance.
+ * OTSpanContextCorruptedCode should be used by `extract` implementations that found part of an injected trace but noticed data corruption and thus could not construct the extrectad OTSpanContext instance.
  */
-FOUNDATION_EXPORT NSInteger OTSpanContextCorrupted;
+FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
 
 /**
  * OTTracer is the starting point for all OpenTracing instrumentation. Use it to create OTSpans, inject/extract them between processes, and so on.

@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * OTSpanContext represents Span state that must propagate to descendant Spans and across process boundaries.
  *
@@ -26,3 +28,5 @@
 - (NSString*)getBaggageItem:(NSString*)key;
 
 @end
+
+NS_ASSUME_NONNULL_END
