@@ -2,17 +2,13 @@
 
 # OpenTracing API for Objective-C
 
-This library is a Objective-C/cocoa platform API for OpenTracing.
+This library is an Objective-C platform API for OpenTracing.
 
 ## Required Reading
 
-In order to understand the Python platform API, one must first be familiar with
+In order to understand the Objective-C platform API, one must first be familiar with
 the [OpenTracing project](http://opentracing.io) and
 [terminology](http://opentracing.io/spec/) more generally.
-
-## Status
-
-**This is a work-in-progress codebase.** Caveat emptor re backwards-incompatible changes, etc.
 
 ## Installation (CocoaPods)
 
