@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "opentracing"
-  s.version          = "0.2.9"
+  s.version          = "0.2.10"
   s.summary          = "The OpenTracing API for Objective-C"
 
   s.description      = <<-DESC
