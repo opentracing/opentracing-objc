@@ -14,19 +14,19 @@ FOUNDATION_EXPORT NSString *const OTReferenceFollowsFrom;
 @interface OTReference : NSObject
 
 @property (strong, nonatomic) NSString* type;
-@property (strong, nonatomic) id<OTSpanContext> referencedSpanContext;
+@property (strong, nonatomic) id<OTSpanContext> referencedContext;
 
 /**
  * A convenience helper that constructs an OTReferenceChildOf reference.
  *
- * @see OTReference#initWithType:referencedSpanContext:
+ * @see OTReference#initWithType:referencedContext:
  */
 + (OTReference*)childOf:(id<OTSpanContext>)parentContext;
 
 /**
  * A convenience helper that constructs an OTReferenceFollowsFrom reference.
  *
- * @see OTReference#initWithType:referencedSpanContext:
+ * @see OTReference#initWithType:referencedContext:
  */
 + (OTReference*)followsFrom:(id<OTSpanContext>)precedingContext;
 
@@ -35,12 +35,12 @@ FOUNDATION_EXPORT NSString *const OTReferenceFollowsFrom;
  *
  * @param type the identifier for the OTReference type; typically
           OTReferenceChildOf or OTReferenceFollowsFrom
- * @param referencedSpanContext the OTSpanContext being referred to
+ * @param referencedContext the OTSpanContext being referred to
  *
  * @see OTReference#childOf
  * @see OTReference#followsFrom
  */
-- (instancetype)initWithType:(NSString*)type referencedSpanContext:(id<OTSpanContext>)referencedSpanContext;
+- (instancetype)initWithType:(NSString*)type referencedContext:(id<OTSpanContext>)referencedContext;
 
 @end
 

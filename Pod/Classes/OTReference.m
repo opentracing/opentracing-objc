@@ -6,17 +6,17 @@ NSString* const OTReferenceFollowsFrom = @"follows_from";
 @implementation OTReference
 
 + (OTReference*)childOf:(id<OTSpanContext>)parentContext {
-    return [[OTReference alloc] initWithType:OTReferenceChildOf referencedSpanContext:parentContext];
+    return [[OTReference alloc] initWithType:OTReferenceChildOf referencedContext:parentContext];
 }
 
 + (OTReference*)followsFrom:(id<OTSpanContext>)precedingContext {
-    return [[OTReference alloc] initWithType:OTReferenceFollowsFrom referencedSpanContext:precedingContext];
+    return [[OTReference alloc] initWithType:OTReferenceFollowsFrom referencedContext:precedingContext];
 }
 
-- (instancetype)initWithType:(NSString*)type referencedSpanContext:(id<OTSpanContext>)referencedSpanContext {
+- (instancetype)initWithType:(NSString*)type referencedContext:(id<OTSpanContext>)referencedContext {
     if (self = [super init]) {
         _type = type;
-        _referencedSpanContext = referencedSpanContext;
+        _referencedContext = referencedContext;
     }
     return self;
 }
