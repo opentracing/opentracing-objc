@@ -48,8 +48,8 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 - (id<OTSpan>)startSpan:(NSString*)operationName childOf:(id<OTSpanContext>)parent tags:(NSDictionary*)tags startTime:(NSDate*)startTime { return g_defaultNoopSpan; }
 - (id<OTSpan>)startSpan:(NSString*)operationName references:(NSArray*)references tags:(NSDictionary*)tags startTime:(NSDate*)startTime { return g_defaultNoopSpan; }
 
-- (bool)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier { return true; }
-- (bool)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError { return true; }
+- (BOOL)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier { return true; }
+- (BOOL)inject:(id<OTSpanContext>)span format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError { return true; }
 
 - (id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier { return nil; }
 - (id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError { return nil; }

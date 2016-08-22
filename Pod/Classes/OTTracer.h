@@ -149,7 +149,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
 /**
  * @see OTTracer#inject:format:carrier:error:
  */
-- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier;
+- (BOOL)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier;
 /**
  * Transfer the span information into the carrier of the given format.
  *
@@ -179,7 +179,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
  */
-- (bool)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (BOOL)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
 
 /**
  * @see OTTracer#extractWithFormat:carrier:error:
