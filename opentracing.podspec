@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "opentracing"
-  s.version          = "0.2.12"
+  s.version          = "0.2.13"
   s.summary          = "The OpenTracing API for Objective-C"
 
   s.description      = <<-DESC
@@ -16,4 +16,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
+  s.resource_bundles = {
+    'opentracing' => ['Pod/Assets/*.png']
+  }
 end
