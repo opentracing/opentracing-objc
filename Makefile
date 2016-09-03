@@ -22,7 +22,8 @@ increment_version:
 	mv VERSION.incr VERSION
 	echo "// GENERATED FILE: Do not edit directly\n#define OT_TRACER_VERSION @\"$(shell cat VERSION)\"\n" > Pod/Classes/OTVersion.h
 	@echo "Updating the version string in the podspec..."
-	sed 's/_VERSION_STRING_/$(shell cat VERSION)/g' opentracing.podspec.src > opentracing.podspec	
+	echo "# GENERATED FILE: DO NOT EDIT DIRECTLY" > opentracing.podspec
+	sed 's/_VERSION_STRING_/$(shell cat VERSION)/g' opentracing.podspec.src >> opentracing.podspec	
 	git add .
 	git commit -m "Increment version to $(shell cat VERSION)"
 	git tag $(shell cat VERSION)
