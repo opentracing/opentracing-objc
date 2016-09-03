@@ -17,22 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OTSpanContext
 
 /**
- * Add a baggage item that propagates along with the distributed trace. See
- * http://opentracing.io/spec/#baggage .
+ * An iterator for OTSpanContext baggage.
  *
- * @param key the key for the Baggage item
- * @param value: the Baggage item value; an opaque string value
+ * If the callback returns false, iteration stops and forEachBaggageItem:
+ * returns early.
  */
-- (void)setBaggageItem:(NSString*)key value:(NSString*)value;
-
-/**
- * Retrieve a baggage item that propagates along with the distributed trace.
- * See http://opentracing.io/spec/#baggage
- *
- * @param key the key for the Baggage item.
- * @returns nil if.f. no baggage item exists for the given key.
- */
-- (NSString*)getBaggageItem:(NSString*)key;
+- (void)forEachBaggageItem:(bool (^) (NSString* key, NSString* value))callback;
 
 @end
 

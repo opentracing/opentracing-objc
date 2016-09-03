@@ -73,6 +73,25 @@ NS_ASSUME_NONNULL_BEGIN
     payload:(nullable NSObject*)payload;
 
 /**
+ * Add a baggage item that propagates along with the distributed trace. See
+ * http://opentracing.io/spec/#baggage .
+ *
+ * @param key the key for the Baggage item
+ * @param value the Baggage item value; an opaque string value
+ * @returns this OTSpan, for chaining
+ */
+- (id<OTSpan>)setBaggageItem:(NSString*)key value:(NSString*)value;
+
+/**
+ * Retrieve a baggage item that propagates along with the distributed trace.
+ * See http://opentracing.io/spec/#baggage
+ *
+ * @param key the key for the Baggage item.
+ * @returns nil if.f. no baggage item exists for the given key.
+ */
+- (NSString*)getBaggageItem:(NSString*)key;
+
+/**
  * Mark the finish time and record this Span.
  */
 - (void) finish;
