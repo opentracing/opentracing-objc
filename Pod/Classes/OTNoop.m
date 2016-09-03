@@ -14,8 +14,7 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 @end
 
 @implementation OTNoopSpanContext
-- (void)setBaggageItem:(NSString*)key value:(NSString*)value {}
-- (NSString*)getBaggageItem:(NSString*)key { return nil; }
+- (void)forEachBaggageItem:(bool (^) (NSString* key, NSString* value))callback {}
 @end
 
 @interface OTNoopSpan : NSObject<OTSpan>
@@ -29,6 +28,8 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 - (void)logEvent:(NSString*)eventName {}
 - (void)logEvent:(NSString*)eventName payload:(NSObject*)payload {}
 - (void)log:(NSString*)eventName timestamp:(NSDate*)timestamp payload:(NSObject*)payload {}
+- (id<OTSpan>)setBaggageItem:(NSString*)key value:(NSString*)value { return self; }
+- (NSString*)getBaggageItem:(NSString*)key { return nil; }
 - (void)finish {}
 - (void)finishWithTime:(NSDate*)finishTime {}
 @end
