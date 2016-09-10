@@ -14,7 +14,7 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 @end
 
 @implementation OTNoopSpanContext
-- (void)forEachBaggageItem:(bool (^) (NSString* key, NSString* value))callback {}
+- (void)forEachBaggageItem:(BOOL (^) (NSString* key, NSString* value))callback {}
 @end
 
 @interface OTNoopSpan : NSObject<OTSpan>
