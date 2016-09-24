@@ -38,35 +38,45 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setTag:(NSString*)key value:(NSString*)value;
 
 /**
- * Log a timestamped event.
+ * Log a moment in the lifetime of the OTSpan instance.
  *
- * @see OTSpan#log:timestamp:payload: for parameter information.
+ * @see OTSpan#log:timestamp: for parameter information.
+ */
+- (void)log:(NSDictionary<NSString*, NSObject*>*)fields;
+
+/**
+ * Log a moment in the lifetime of the OTSpan instance.
+ *
+ * @param fields the fields dictionary should contain key:value pairs where the
+ *        keys are NSStrings. Traces are expected to handle NSString or NSNumber
+ *        values. They may also handle arbtrary NSObjects.
+ *
+ * @param timestamp an explicit timestamp for the log data, or nil to use the
+ *        current walltime
+ */
+- (void)log:(NSDictionary<NSString*, NSObject*>*)fields timestamp:(nullable NSDate*)timestamp;
+
+/**
+ * Deprecated. Equivalent to
+ *
+ *   [span log:@{@"event": eventName}];
+ *
  */
 - (void)logEvent:(NSString*)eventName;
 
 /**
- * Log a timestamped event along with an arbitrary payload of data.
+ * Deprecated. Equivalent to
  *
- * @see OTSpan#log:timestamp:payload: for parameter information.
+ *   [span log:@{@"event": eventName, @"payload": payload}];
+ *
  */
 - (void)logEvent:(NSString*)eventName payload:(nullable NSObject*)payload;
 
 /**
- * Create a log record for given event with a manually specified timestamp
- * and an optional payload.
+ * Deprecated. Equivalent to
  *
- * @param eventName the event name should be the stable identifier for some
- *        notable moment in the lifetime of a Span. For instance, a Span representing a
- *        browser page load might add an event for each of the Performance.timing
- *        moments. While it is not a formal requirement, specific event names should
- *        apply to many Span instances: tracing systems can use these event names (and
- *        timestamps) to analyze Spans in the aggregate.
+ *   [span log:@{@"event": eventName, @"payload": payload} timestamp:timestamp];
  *
- * @param timestamp an explicit timestamp for the log data, or nil to use the
- *        current walltime
- *
- * @param payload an optional structured payload object, all or none of which
- *        may be recorded by the underlying OTSpan implementation
  */
 - (void)log:(NSString*)eventName
   timestamp:(nullable NSDate*)timestamp
