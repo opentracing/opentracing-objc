@@ -25,6 +25,8 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 - (id<OTSpanContext>)context { return g_defaultNoopSpanContext; }
 - (void)setOperationName:(NSString*)operationName {}
 - (void)setTag:(NSString*)key value:(NSString*)value {}
+- (void)log:(NSDictionary<NSString*, NSObject*>*)fields {}
+- (void)log:(NSDictionary<NSString*, NSObject*>*)fields timestamp:(nullable NSDate*)timestamp {}
 - (void)logEvent:(NSString*)eventName {}
 - (void)logEvent:(NSString*)eventName payload:(NSObject*)payload {}
 - (void)log:(NSString*)eventName timestamp:(NSDate*)timestamp payload:(NSObject*)payload {}

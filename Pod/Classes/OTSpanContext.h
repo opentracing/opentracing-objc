@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  * If the callback returns false, iteration stops and forEachBaggageItem:
  * returns early.
  */
-- (void)forEachBaggageItem:(bool (^) (NSString* key, NSString* value))callback;
+- (void)forEachBaggageItem:(BOOL (^) (NSString* key, NSString* value))callback;
 
 @end
 
