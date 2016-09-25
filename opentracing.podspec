@@ -1,7 +1,7 @@
 # GENERATED FILE: DO NOT EDIT DIRECTLY
 Pod::Spec.new do |s|
   s.name             = "opentracing"
-  s.version          = "0.4.1"
+  s.version          = "0.4.2"
   s.summary          = "The OpenTracing API for Objective-C"
 
   s.description      = <<-DESC
