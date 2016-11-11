@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @protocol OTSpanContext;
 @protocol OTTracer;
 
