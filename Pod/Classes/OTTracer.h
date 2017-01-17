@@ -108,7 +108,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  *      value documentation
  */
 - (id<OTSpan>)startSpan:(NSString*)operationName
-                childOf:(nullable id<OTSpan>)parent
+                childOf:(nullable id<OTSpanContext>)parent
                    tags:(nullable NSDictionary*)tags;
 
 /**
