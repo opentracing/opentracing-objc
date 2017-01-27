@@ -101,12 +101,12 @@ NS_ASSUME_NONNULL_BEGIN
  * @param key the key for the Baggage item.
  * @returns nil if.f. no baggage item exists for the given key.
  */
-- (NSString*)getBaggageItem:(NSString*)key;
+- (nullable NSString*)getBaggageItem:(NSString*)key;
 
 /**
  * Mark the finish time and record this Span.
  */
-- (void) finish;
+- (void)finish;
 
 /**
  * Record this Span with the explicitly specified finish time.
@@ -114,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param finishTime an explicit finish timestamp; if finishTime is nil, the
  *        local walltime is used instead
  */
-- (void) finishWithTime:(nullable NSDate*)finishTime;
+- (void)finishWithTime:(nullable NSDate*)finishTime;
 
 @end
 
