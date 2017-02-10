@@ -35,9 +35,25 @@ NS_ASSUME_NONNULL_BEGIN
  * Adds a single tag to the span.
  *
  * @param key the key for the tag
- * @param value the tag's value
+ * @param value the tag's value of string type
  */
-- (void)setTag:(NSString*)key value:(NSString*)value;
+- (void)setTag:(NSString *)key value:(NSString *)value;
+
+/**
+ * Adds a single tag to the span.
+ *
+ * @param key the key for the tag
+ * @param value the tag's value of numeric type
+ */
+- (void)setTag:(NSString *)key numberValue:(NSNumber *)value;
+
+/**
+ * Adds a single tag to the span.
+ *
+ * @param key the key for the tag
+ * @param value the tag's value of boolean type
+ */
+- (void)setTag:(NSString *)key boolValue:(BOOL)value;
 
 /**
  * Log a moment in the lifetime of the OTSpan instance.

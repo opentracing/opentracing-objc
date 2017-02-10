@@ -24,7 +24,9 @@ static OTNoopSpanContext* g_defaultNoopSpanContext;
 - (id<OTTracer>)tracer { return g_defaultNoopTracer; }
 - (id<OTSpanContext>)context { return g_defaultNoopSpanContext; }
 - (void)setOperationName:(NSString*)operationName {}
-- (void)setTag:(NSString*)key value:(NSString*)value {}
+- (void)setTag:(NSString*)key value:(NSString *)value {}
+- (void)setTag:(NSString*)key numberValue:(NSNumber *)value {}
+- (void)setTag:(NSString*)key boolValue:(BOOL)value {}
 - (void)log:(NSDictionary<NSString*, NSObject*>*)fields {}
 - (void)log:(NSDictionary<NSString*, NSObject*>*)fields timestamp:(nullable NSDate*)timestamp {}
 - (void)logEvent:(NSString*)eventName {}
