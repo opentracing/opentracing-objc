@@ -17,3 +17,8 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)!
 ```ruby
 pod "opentracing"
 ```
+
+## License
+
+By contributing to OpenTracing documentation repository, you agree that your contributions will be licensed under its [MIT License](./LICENSE).
+
