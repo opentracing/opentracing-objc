@@ -17,3 +17,11 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)!
 ```ruby
 pod "opentracing"
 ```
+
+## Installation (SwiftPM)
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/opentracing/opentracing-objc", from: "0.5.0")
+]
+```
