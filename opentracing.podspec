@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author           = { "The OpenTracing Authors" => "info@opentracing.io" }
   s.source           = { :git => "https://github.com/opentracing/opentracing-objc.git", :tag => s.version.to_s }
 
-  s.platforms        = { :ios =>  '7.0', :watchos => '2', :osx => '10.9', :tvos => '7.0' }
+  s.platforms        = { :ios =>  '7.0', :watchos => '2', :osx => '10.9', :tvos => '9.0' }
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*.{h,m}'
