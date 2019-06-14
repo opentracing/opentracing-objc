@@ -17,3 +17,7 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)!
 ```ruby
 pod "opentracing"
 ```
+
+## Licensing
+
+[Apache 2.0 License](./LICENSE).
