@@ -12,6 +12,11 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .target(  name: "Opentracing", dependencies: [], path: "Pod/Classes")
+        .target(  name: "Opentracing",
+                  dependencies: [],
+                  path: "Pod",
+                  sources:["Classes"],
+                  publicHeadersPath: "SPMHeaders")
     ]
 )
+
