@@ -179,7 +179,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTUsupportedFormatCode
  * @see OTInvalidCarrierCode
  */
-- (BOOL)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (BOOL)inject:(id<OTSpanContext>)spanContext format:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError NS_SWIFT_NAME(inject(spanContext:format:carrier:));
 
 /**
  * @see OTTracer#extractWithFormat:carrier:error:
@@ -221,7 +221,7 @@ FOUNDATION_EXPORT NSInteger OTSpanContextCorruptedCode;
  * @see OTSpanContextCorruptedCode
  * @see OTTracer#startSpan:references:tags:startTime:
  */
-- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError;
+- (nullable id<OTSpanContext>)extractWithFormat:(NSString*)format carrier:(id)carrier error:(NSError* __autoreleasing *)outError NS_SWIFT_NAME(extractWithFormat(format:carrier:));
 
 @end
 
