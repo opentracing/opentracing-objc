@@ -17,3 +17,18 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)!
 ```ruby
 pod "opentracing"
 ```
+
+### Install with Swift Package Manager
+
+ The [Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code.
+
+ Add the following to your `Package.swift` file:
+ ```
+ dependencies: [
+     .package(url: "https://github.com/opentracing/opentracing-objc.git", .branch("master"))
+ ]
+ ```
+ And then build your project
+ ```
+ $ swift build
+ ```
