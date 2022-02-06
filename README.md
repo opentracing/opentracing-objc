@@ -18,7 +18,7 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)!
 pod "opentracing"
 ```
 
-### Install with Swift Package Manager
+## Installation (Swift Package Manager)
 
  The [Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code.
 
